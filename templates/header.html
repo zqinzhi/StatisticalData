@@ -1,0 +1,92 @@
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>干部培训学院教师信息可视化统计系统</title>
+    <script src="/static/dist/js/echarts.min.js"></script>
+    <script src="/static/dist/js/jquery.min.js"></script>
+    <script src="/static/dist/layui.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/dist/css/index.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/static/dist/css/layui.css" media="all">
+</head>
+<body>
+<!-- 顶部开始 -->
+<div class="header">
+    <div class="headerCol3">
+
+    </div>
+    <div class="headerCol3">
+        <div class="headerConten">
+            <div class="threeInfo">
+                <a href="/"><i class="layui-icon" style="font-size: 32px;">&#xe68e;</i></a>
+            </div>
+            <a href="/">
+                <div class="headerText">首页</div>
+            </a>
+        </div>
+        <div class="headerConten">
+            <div class="threeInfo">
+                <a href="/allClass/"><i class="layui-icon" style="font-size: 32px;">&#xe60a;</i></a>
+            </div>
+            <a href="/allClass/">
+                <div class="headerText">培训班信息</div>
+            </a>
+        </div>
+        <div class="headerConten">
+            <div class="threeInfo">
+                <a href="/allTeacher/"><i class="layui-icon" style="font-size: 32px;">&#xe66f;</i></a>
+            </div>
+            <a href="/allTeacher/">
+                <div class="headerText">教师信息</div>
+            </a>
+        </div>
+        <div class="headerConten">
+            <div class="threeInfo">
+                <a href="/allCourse/"><i class="layui-icon" style="font-size: 32px;">&#xe705;</i></a>
+            </div>
+            <a href="/allCourse/">
+                <div class="headerText">课程信息</div>
+            </a>
+        </div>
+    </div>
+    <div class="headerCol3">
+        <div class="headerLogin">
+            <b>{{ request.user }}</b>，欢迎您！&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'logout' %}">退出</a>
+        </div>
+    </div>
+</div>
+
+<!-- 数据概览开始 -->
+<div class="dataShow">
+    <div class="oneData">
+        <div class="threeInfo">
+            <i class="layui-icon" style="font-size: 45px; color:#009688; margin-top:24px;">&#xe62d;</i>
+            <div class="text">{{ classesNum }}</div>
+        </div>
+        <div class="explain"><p style="color: #23262E"><b>培训班班次</b></p></div>
+    </div>
+    <div class="oneData">
+        <div class="threeInfo">
+            <i class="layui-icon" style="font-size: 45px; color:#009688; margin-top:24px;">&#xe613;</i>
+            <div class="text">{{ peopleNum }}</div>
+        </div>
+        <div class="explain"><p style="color: #23262E"><b>培训班人次</b></p></div>
+    </div>
+    <div class="oneData">
+        <div class="threeInfo">
+            <i class="layui-icon" style="font-size: 45px; color:#009688; margin-top:24px;">&#xe770;</i>
+            <div class="text">{{ teachersNum }}</div>
+        </div>
+        <div class="explain"><p style="color: #23262E"><b>授课教师</b></p></div>
+    </div>
+    <div class="oneData">
+        <div class="threeInfo">
+            <i class="layui-icon" style="font-size: 45px; color:#009688; margin-top:24px;">&#xe67a;</i>
+            <div class="text">{{ dayNum }}</div>
+        </div>
+        <div class="explain"><p style="color: #23262E"><b>培训天数</b></p></div>
+    </div>
+</div>
+<!-- 数据概览结束 -->
+<!-- 顶部结束 -->
+</body>
+</html>

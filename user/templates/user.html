@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <script src="/static/dist/js/jquery-2.1.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/dist/css/styles.css">
+</head>
+<body>
+<div class="htmleaf-container">
+    <div class="wrapper">
+        <div class="container">
+            <h1>数据管理平台</h1>
+            <br/>
+            <form class="form" action="" method="post">
+                {% csrf_token %}
+                <input type="text" placeholder="Username" name="username">
+                <input type="password" placeholder="Password" name="password">
+                <button type="submit">Login</button>
+            </form>
+            <br/>
+            {% if tips %}
+                <div>{{ tips }}</div>
+            {% endif %}
+
+        </div>
+
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+<script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
+</body>
+</html>

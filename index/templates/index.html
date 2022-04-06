@@ -1,0 +1,65 @@
+<html>
+<body>
+<!-- 顶部开始 -->
+{% include 'header.html' %}
+<!-- 顶部结束 -->
+
+<!-- 顶部结束 -->
+<!-- 柱状图和饼图开始 -->
+<div class="mainContent" style="height:800px; padding-top: 5px; background-color: #87CEEB; margin-top: 150px;"
+     id="mainShow"></div>
+<script type="text/javascript">
+    var chartDom = document.getElementById('mainShow');
+    var myChart = echarts.init(chartDom);
+    var option;
+    option = {
+        title: {
+            text: '各类培训班情况',
+            left: 'center',
+            top: 50,
+            textStyle: {
+                fontSize: 40,
+            }
+        },
+        tooltip: {
+            trigger: 'item'
+        },
+        series: [
+            {
+                name: '数量',
+                type: 'pie',
+                radius: '50%',
+                data: [
+                    {value: {{ ztbc }}, name: ' {{ ztbcLabel }} '},
+                    {value: {{ sjxx }}, name: ' {{ sjxxLabel }} '},
+                    {value: {{ gnwtb }}, name: ' {{ gnwtbLabel }} '},
+                    {value: {{ gwwtb }}, name: ' {{ gwwtbLabel }} '},
+                ],
+                label: {
+                    textStyle: {
+                        fontSize: 25,
+                        color: "rgb(0,139,139)",
+                    },
+                },
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+
+    option && myChart.setOption(option);
+</script>
+<!-- 折线图和饼结束始 -->
+<div style="height: 20px;"></div>
+<!-- 底部开始 -->
+<div class="footer2">
+    版权所有©峤智编程
+</div>
+<!-- 底部开始 -->
+</body>
+</html>

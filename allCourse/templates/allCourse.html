@@ -1,0 +1,228 @@
+<html>
+<body>
+<!-- 顶部开始 -->
+{% include 'header.html' %}
+<!-- 顶部结束 -->
+
+<!-- 柱状图和饼图开始 -->
+<div class="mainContent">
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" class="histogram"></div>
+    <script type="text/javascript">
+
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        option = {
+            title: {
+                text: '教学类型',
+                left: 'left'
+            },
+            xAxis: {
+                type: 'category',
+                data: ['分组讨论', '专题辅导', '自学', '影视教学', '经验交流', '结构化研讨', '团队建设', '现场教学', '体验教学', '示范课', '案例教学'],
+                axisLabel: {
+                    interval: 0,
+                }
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    data: {{ lxNum }},
+                    type: 'bar',
+                    showBackground: true,
+                    backgroundStyle: {
+                        color: 'rgba(180, 180, 180, 0.2)'
+                    },
+                    itemStyle: {
+                        normal: {
+                            label: {
+                                show: true,      //开启显示
+                                position: 'top', //在上方显示
+                                textStyle: {     //数值样式
+                                    color: 'black',
+                                    fontSize: 16
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        };
+
+        option && myChart.setOption(option);
+    </script>
+    <div id="main2" class="pieChart"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main2'));
+
+        // 指定图表的配置项和数据
+        option = {
+            title: {
+                text: '课程模块',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 'left'
+            },
+            series: [
+                {
+                    name: '课程模块',
+                    type: 'pie',
+                    radius: '50%',
+                    data: [
+                        {value: {{ dxjy }}, name: '党的理论、党史学习、党性教育'},
+                        {value: {{ mzgtt }}, name: '铸牢中华民族共同体意识'},
+                        {value: {{ zssy }}, name: '知识素养'},
+                        {value: {{ zyhnl }}, name: '专业化能力'},
+                        {value: {{ xczx }}, name: '脱贫攻坚乡村振兴'}
+                    ],
+                    emphasis: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</div>
+
+<!-- 柱状图和饼图结束 -->
+
+
+<!-- 折线图和饼图开始 -->
+<div class="mainContent">
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main3" class="histogram"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var chartDom = document.getElementById('main3');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        option = {
+            title: {
+                text: '专题评议得分'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            legend: {},
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value',
+                boundaryGap: [0, 0.01]
+            },
+            yAxis: {
+                type: 'category',
+                data: ['平均分', '最低分', '最高分']
+            },
+            series: [
+                {
+                    name: '全部课程评分',
+                    type: 'bar',
+                    data: {{ scoreList }},
+                    barWidth: 40,
+                    itemStyle: {
+                        normal: {
+                            color: 'rgb(244,164,96)',
+                            label: {
+                                show: true,      //开启显示
+                                position: 'top', //在上方显示,
+                                textStyle: {     //数值样式
+                                    color: 'black',
+                                    fontSize: 16
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        };
+        option && myChart.setOption(option);
+    </script>
+
+    <div id="main4" class="pieChart"></div>
+    <script type="text/javascript">
+        var chartDom = document.getElementById('main4');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        option = {
+            title: {
+                text: '各课程模块平均分',
+                left: 'top'
+            },
+            xAxis: {
+                type: 'category',
+                data: ['党性教育', '铸牢中华民族共同体意识', '知识素养', '专业化能力', '脱贫攻坚乡村振兴'],
+                axisLabel: {
+                    interval: 0,
+                }
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    data: {{ moduleAverage }},
+                    type: 'bar',
+                    showBackground: true,
+                    color: 'rgb(95,158,160)',
+                    barWidth: 60,
+                    backgroundStyle: {
+                        color: 'rgba(180,180,180, 0.2)'
+                    },
+                    itemStyle: {
+                        normal: {
+                            label: {
+                                show: true,      //开启显示
+                                position: 'top', //在上方显示
+                                textStyle: {     //数值样式
+                                    color: 'black',
+                                    fontSize: 16
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        };
+
+        option && myChart.setOption(option);
+    </script>
+</div>
+
+
+<!-- 增加的一个空行 -->
+<div style="height: 150px;"></div>
+
+<!-- 底部开始 -->
+<div class="footer">
+    版权所有©峤智编程
+</div>
+<!-- 底部开始 -->
+</body>
+</html>
